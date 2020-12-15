@@ -1,0 +1,2 @@
+20 6  * * * /app/procesamiento_tamales.sh > /app/procesamiento_tamales_log_`date +\%Y\%m\%d`.log 2>&1
+# An empty line is required at the end of this file for a valid cron file.
