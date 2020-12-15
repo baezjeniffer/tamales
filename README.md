@@ -47,6 +47,17 @@ Este servicio genera la predicción del modelo con las ventas y categpria calór
 ### Orquestador
 El orquestador es a través de un cron de Linux que se inicia al levantar el Docker y será ejecutado al final del día (23:59) de cada Domingo. El cron iniciará el proceso ETL que consume los datos de los 6 días previos a la fecha de ejecucióny genera los datos procesados (métricas y generación de modelo estrella).
 
+## Ventajas:
+1. Se utilizó Docker con el objetivo de que el despliegue sea agnóstico en cualquier sistema operativo o nube que tenga instalado Docker.
+2. El reprocesamiento de datos puede hacerse en cualquier momento debido a que se cuenta con un servicio al igual que el modelo.
+3. Docker nos permite ser escalable, sin embargo serían necesarias otras herramientas para orquestar los contenedores.
+
+
+## Desventajas:
+1. Tiene que desarrollarse métricas de calidad de información.
+2. Debe haber solo un archivo por semana.
+3. El almacenamiento está de manera local, lo cual impide la disponibilidad para otros usuarios, por lo que sería necesario un motor de base de datos debido al modelo de almacenamiento estrella propuesto o un storage como S3.
+
 ## Notas:
 Se agrega un ejemplo de los datos procesados en la carpeta procesado/generador/ para tamales_inc y teinvento_inc.
 
