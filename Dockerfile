@@ -14,8 +14,10 @@ COPY . /app
 RUN apt-get update && apt-get -y install cron
 COPY cron_tamales /etc/cron.d/cron_tamales
 RUN chmod 0644 /etc/cron.d/cron_tamales
+#RUN service cron start
+# Apply cron job
 RUN crontab /etc/cron.d/cron_tamales
 
-ENTRYPOINT [ "python" ]
+ENTRYPOINT [ "/app/docker_entrypoint.sh" ]
 
-CMD [ "app.py" ]
+CMD [ "/app/app.py" ]
